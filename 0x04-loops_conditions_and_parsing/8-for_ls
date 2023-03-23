@@ -4,5 +4,5 @@
 LIST=$(ls .)
 for NAME in $LIST
 do
-    ls "$NAME" | cut -d "-" -f2
+    find "$NAME" | cut -d "-" -f2
 done
