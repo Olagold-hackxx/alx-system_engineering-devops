@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#Displays "To infinity and beyond" indefinitely but sleeps for every 2s but traps SIGTERM
 
 while :
 do
