@@ -1,0 +1,1 @@
+Learnt about localhost, hostfiles, netcat utilities and many more about network and how the internet works
