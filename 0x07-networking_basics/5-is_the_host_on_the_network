@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 #Ping an IP 5 times
 
-
-ping -c 5 $1
+ping -c 5 "$1"
