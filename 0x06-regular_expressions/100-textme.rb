@@ -2,4 +2,4 @@
 
 sender, receiver, flags = ARGV[0].match(/from:(\+?\w+)?\].*to:(\+?\w+)?\].*flags?:([-:\d]+)?/).captures
 
-puts "#{sender}, #{receiver}, #{flags}"
+puts "#{sender},#{receiver},#{flags}"
