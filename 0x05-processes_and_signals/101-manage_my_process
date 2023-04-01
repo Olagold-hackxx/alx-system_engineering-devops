@@ -20,6 +20,8 @@ then
         ./manage_my_process &
         echo $! > /var/run/my_process.pid
         echo "manage_my_process restarted"
+    else
+        echo "Usage: manage_my_process {start|stop|restart}"
     fi
 else
     echo "Usage: manage_my_process {start|stop|restart}"
