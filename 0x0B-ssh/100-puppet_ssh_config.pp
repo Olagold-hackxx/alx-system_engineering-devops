@@ -1,5 +1,5 @@
 # Modify client config file
-usr/include stdlib
+include stdlib
 
 file_line {
   'password_auth':
