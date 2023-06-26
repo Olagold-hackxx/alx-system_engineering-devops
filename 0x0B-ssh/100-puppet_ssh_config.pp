@@ -1,5 +1,5 @@
 # Modify client config file
-include stdlib
+usr/include stdlib
 
 file_line {
   'password_auth':
@@ -10,5 +10,5 @@ file_line {
   'key_location':
     ensure => present,
     path   => '/etc/ssh/ssh_config',
-    line   => '    IdentityFile ~/.ssh/holberton'
+    line   => '    IdentityFile ~/.ssh/school'
 }
