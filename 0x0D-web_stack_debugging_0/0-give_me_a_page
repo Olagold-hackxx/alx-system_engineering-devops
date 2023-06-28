@@ -1,0 +1,3 @@
+#!/usr/binenv bash
+#Debug docker
+sudo service apache2 start
