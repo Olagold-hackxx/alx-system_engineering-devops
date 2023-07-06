@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # Debug server
 sudo sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-sudo service nginx restart
-sudo pkill -1 -f '/usr/sbin/nginx'
+sudo pkill -1 -f nginx
