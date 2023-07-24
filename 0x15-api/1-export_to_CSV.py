@@ -18,11 +18,12 @@ if __name__ == '__main__':
             completed_task = 0
             tasks = 0
             tasks_titles = []
-            filename =  argv[1] + '.csv'
+            filename = argv[1] + '.csv'
             for todos in todo_res:
                 user_id = user.get('id')
                 username = user.get('username')
                 todo_status = todos.get('completed')
-                todo_title =  todos.get('title')
+                todo_title = todos.get('title')
                 with open(filename, mode='a', encoding='utf8') as user_details:
-                    user_details.write('"{}","{}","{}","{}"\n'.format(user_id, username, todo_status, todo_title))
+                    user_details.write('"{}","{}","{}","{}"\n'.format(
+                        user_id, username, todo_status, todo_title))
