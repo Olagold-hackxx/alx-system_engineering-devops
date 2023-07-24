@@ -9,15 +9,11 @@ if __name__ == '__main__':
     todo = 'https://jsonplaceholder.typicode.com/todos'
 
     user_req = requests.get(user, params={id: argv[1]})
-
     user_res = user_req.json()
     for user in user_res:
         if int(argv[1]) == user.get("id"):
             todo_req = requests.get(todo, params={'userId': argv[1]})
             todo_res = todo_req.json()
-            completed_task = 0
-            tasks = 0
-            tasks_titles = []
             filename = argv[1] + '.csv'
             for todos in todo_res:
                 user_id = user.get('id')
