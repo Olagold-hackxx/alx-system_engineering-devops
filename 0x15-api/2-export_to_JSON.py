@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """REST api"""
-import requests
 import json
+import requests
 from sys import argv
 
 
@@ -22,6 +22,7 @@ if __name__ == '__main__':
             user_id = user.get("id")
             for todos in todo_res:
                 details = {}
+
                 details["task"] = todos.get('title')
                 details["completed"] = todos.get('completed')
                 details["name"] = user.get('username')
