@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """REST api"""
-import requests
 import json
+import requests
 from sys import argv
 
 
@@ -25,5 +25,6 @@ if __name__ == '__main__':
             details["username"] = user.get('username')
             tasks.append(details)
         user_details[user_id] = tasks
-    with open('todo_all_employees.json', mode='w', encoding='utf8') as userJson:
+    with open('todo_all_employees.json',
+              mode='w', encoding='utf8') as userJson:
         json.dump(user_details, userJson)
