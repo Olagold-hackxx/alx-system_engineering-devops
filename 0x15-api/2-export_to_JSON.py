@@ -22,10 +22,9 @@ if __name__ == '__main__':
             user_id = user.get("id")
             for todos in todo_res:
                 details = {}
-
                 details["task"] = todos.get('title')
                 details["completed"] = todos.get('completed')
-                details["name"] = user.get('username')
+                details["username"] = user.get('username')
                 tasks.append(details)
             user_details[user_id] = tasks
             with open(filename, mode='a', encoding='utf8') as userJson:
