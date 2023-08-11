@@ -32,17 +32,18 @@ def recurse(subreddit, hot_list=[], after=None):
         if res.status_code != 200:
             return None
         res = res.json()
-        subreddit_data = res.get('data', {}).get('children', None)
-        if subreddit_data is None and len(hot_list) < 1:
+        subreddit_data = res.get('data').get('children')
+        if not subreddit_data and len(hot_list) < 1:
             return None
         counter = 0
         result = query_recursive(subreddit_data, counter, hot_list)
-        hot_list = hot_list + result
+        hot_list.extend(result)
+        print(hot_list)
         after = res['data']['after']
         if after is not None:
-            return recurse(subreddit, hot_list, after)
+            return recurse(subreddit, hot_list=hot_list, after=after)
         else:
             return hot_list
 
-    except NameError:
+    except Exception:
         return None
