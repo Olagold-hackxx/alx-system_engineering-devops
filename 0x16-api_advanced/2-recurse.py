@@ -36,8 +36,7 @@ def recurse(subreddit, hot_list=[], after=None):
         if not subreddit_data and len(hot_list) < 1:
             return None
         counter = 0
-        result = query_recursive(subreddit_data, counter, hot_list)
-        hot_list.extend(result)
+        hot_list = query_recursive(subreddit_data, counter, hot_list)
         after = res['data']['after']
         if after is not None:
             return recurse(subreddit, hot_list=hot_list, after=after)
