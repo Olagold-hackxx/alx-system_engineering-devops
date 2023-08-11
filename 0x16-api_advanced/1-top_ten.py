@@ -22,4 +22,4 @@ def top_ten(subreddit):
         for sub_red in data:
             print(sub_red.get('data').get('title'))
     except Exception:
-        return None
+        print(None)
