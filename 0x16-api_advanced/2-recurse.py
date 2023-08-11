@@ -12,7 +12,7 @@ def query_recursive(subred_data, counter, hot_list):
         title = subred_data[counter].get('data').get('title')
     except Exception:
         return hot_list
-    else:
+    if type(title) == str:
         hot_list.append(title)
         counter = counter + 1
         return query_recursive(subred_data, counter, hot_list)
@@ -36,8 +36,8 @@ def recurse(subreddit, hot_list=[], after=None):
         if not subreddit_data and not hot_list:
             return None
         counter = 0
-        result = query_recursive(subreddit_data, counter, hot_list)
-        hot_list.append(result)
+        hot_list.append(query_recursive(subreddit_data, counter, hot_list))
+
         after = res['data']['after']
         if after is not None:
             return recurse(subreddit, hot_list, after)
