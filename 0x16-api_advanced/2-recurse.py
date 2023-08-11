@@ -33,7 +33,7 @@ def recurse(subreddit, hot_list=[], after=None):
             return None
         res = res.json()
         subreddit_data = res['data']['children']
-        if not subreddit_data:
+        if not subreddit_data and not hot_list:
             return None
         counter = 0
         result = query_recursive(subreddit_data, counter, hot_list)
