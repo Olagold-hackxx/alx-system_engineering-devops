@@ -2,11 +2,10 @@
 """ A function that queries the Reddit API and returns
 the top ten hot articles of a given subreddit"""
 
-import requests
-
 
 def top_ten(subreddit):
     """Query api"""
+    import requests
 
     url = "https://reddit.com/r/{}/hot.json".format(subreddit)
     user_agent = "api_advanved_task_0"
