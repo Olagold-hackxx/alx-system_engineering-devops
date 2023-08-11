@@ -1,34 +1,47 @@
 #!/usr/bin/python3
-
-"""
-    Recursive function that queries the Reddit API and returns a list
-    containing the titles of all hot articles for a given subreddit.
-"""
+""" A function that queries the Reddit API and returns
+the all hot articles of a given subreddit"""
 
 import requests
 
 
-def recurse(subreddit, hot_list=[], after=""):
-    """Querying Reddit API, and returns all
-    hot articles for a given subreddit."""
+def query_recursive(subred_data, counter, hot_list):
+    """Query all hot article in a each page recursively"""
 
-    url = "https://api.reddit.com/r/{}/hot".format(subreddit)
-    headers = {'User-Agent': 'Carlos Barros'}
-    arg = {"after": after}
-    resp = requests.get(url, params=arg, headers=headers)
-    list_a = resp.json().get('data', {}).get('children', None)
-    pagination = resp.json().get('data', {}).get('after', None)
-
-    if pagination is not None:
-
-        if list_a:
-            for item in list_a:
-                hot_list.append(item.get("data").get("title"))
-
-        if pagination is not None:
-            recurse(subreddit, hot_list, pagination)
-
+    try:
+        title = subred_data[counter].get('data').get('title')
+    except Exception:
         return hot_list
+    if type(title) == str:
+        hot_list.append(title)
+        counter = counter + 1
+        return query_recursive(subred_data, counter, hot_list)
 
-    else:
+
+def recurse(subreddit, hot_list=[], after=None):
+    """Query all hot articles of a given subreddit"""
+    url = "https://reddit.com/r/{}/hot.json".format(subreddit)
+    user_agent = "api_advanved_task_0"
+
+    headers = {'User-Agent': user_agent}
+    if after is not None:
+        url = url + "?after={}".format(after)
+    res = requests.get(url, headers=headers)
+
+    try:
+        if res.status_code != 200:
+            return None
+        res = res.json()
+        subreddit_data = res.get('data').get('children')
+        if not subreddit_data and len(hot_list) < 1:
+            return None
+        counter = 0
+        hot_list = query_recursive(subreddit_data, counter, hot_list)
+        after = res['data']['after']
+        if after is not None:
+            return recurse(subreddit, hot_list=hot_list, after=after)
+        else:
+            return hot_list
+
+    except Exception:
         return None

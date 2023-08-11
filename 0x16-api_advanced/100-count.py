@@ -20,7 +20,9 @@ def count_words(subreddit, word_list, counter=0, result=[]):
 
 
 def search_keyword(keyword, hotlist, occurence, count):
-    if not hotlist[count]:
+    try:
+        hotlist[count]
+    except Exception:
         return {keyword: occurence}
     else:
         if keyword in hotlist[count].lower():
