@@ -7,7 +7,6 @@ the number of subscribers
 def number_of_subscribers(subreddit):
     """Query api"""
     import requests
-    import json
 
     url = "https://reddit.com/r/{}/about.json".format(subreddit)
     user_agent = "api_advanved_task_0"
