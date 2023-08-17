@@ -18,15 +18,18 @@ def query_recursive(subred_data, counter, hot_list):
         return query_recursive(subred_data, counter, hot_list)
 
 
-def recurse(subreddit, hot_list=[], after=None):
+def recurse(subreddit, hot_list=[], after=None, count=0):
     """Query all hot articles of a given subreddit"""
     url = "https://reddit.com/r/{}/hot.json".format(subreddit)
     user_agent = "api_advanved_task_0"
 
     headers = {'User-Agent': user_agent}
-    if after is not None:
-        url = url + "?after={}".format(after)
-    res = requests.get(url, headers=headers)
+    params = {
+        "after": after,
+        "count": count,
+        "limit": 100
+    }
+    res = requests.get(url, headers=headers, params=params)
 
     try:
         if res.status_code != 200:

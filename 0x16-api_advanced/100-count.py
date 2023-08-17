@@ -27,4 +27,5 @@ def search_keyword(keyword, hotlist, occurence, count):
     else:
         if keyword in hotlist[count].lower():
             occurence = occurence + hotlist[count].lower().count(keyword)
+            print(keyword, occurence)
         return search_keyword(keyword, hotlist, occurence=occurence, count=count + 1)
